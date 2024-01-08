@@ -10,19 +10,19 @@ at your option.
 The MIT License
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights 
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
-    of the Software, and to permit persons to whom the Software is furnished 
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+    of the Software, and to permit persons to whom the Software is furnished
     to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be included in all 
+    The above copyright notice and this permission notice shall be included in all
     copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
-    PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
-    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
-    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE 
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+    PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
     USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
@@ -66,7 +66,7 @@ The Apache License, Version 2.0 (the "License");
 //                       to disable profiler for certain source-file or project.
 //
 
-#ifdef USING_EASY_PROFILER
+// #ifdef USING_EASY_PROFILER
 
 // EasyProfiler core API:
 
@@ -375,47 +375,47 @@ Otherwise, no log messages will be printed.
 #  define EASY_OPTION_START_LISTEN_ON_STARTUP 0
 # endif
 
-#else // #ifdef BUILD_WITH_EASY_PROFILER
+// #else // #ifdef BUILD_WITH_EASY_PROFILER
 
-# define EASY_BLOCK(...)
-# define EASY_NONSCOPED_BLOCK(...)
-# define EASY_FUNCTION(...)
-# define EASY_END_BLOCK 
-# define EASY_PROFILER_ENABLE 
-# define EASY_PROFILER_DISABLE 
-# define EASY_EVENT(...)
-# define EASY_THREAD(...)
-# define EASY_THREAD_SCOPE(...)
-# define EASY_MAIN_THREAD 
-# define EASY_SET_EVENT_TRACING_ENABLED(isEnabled) 
-# define EASY_SET_LOW_PRIORITY_EVENT_TRACING(isLowPriority) 
+// # define EASY_BLOCK(...)
+// # define EASY_NONSCOPED_BLOCK(...)
+// # define EASY_FUNCTION(...)
+// # define EASY_END_BLOCK
+// # define EASY_PROFILER_ENABLE
+// # define EASY_PROFILER_DISABLE
+// # define EASY_EVENT(...)
+// # define EASY_THREAD(...)
+// # define EASY_THREAD_SCOPE(...)
+// # define EASY_MAIN_THREAD
+// # define EASY_SET_EVENT_TRACING_ENABLED(isEnabled)
+// # define EASY_SET_LOW_PRIORITY_EVENT_TRACING(isLowPriority)
 
-# ifndef _WIN32
-#  define EASY_EVENT_TRACING_SET_LOG(filename) 
-#  define EASY_EVENT_TRACING_LOG ""
-# endif
+// # ifndef _WIN32
+// #  define EASY_EVENT_TRACING_SET_LOG(filename)
+// #  define EASY_EVENT_TRACING_LOG ""
+// # endif
 
-# ifndef EASY_OPTION_MEASURE_STORAGE_EXPAND
-#  define EASY_OPTION_MEASURE_STORAGE_EXPAND 0
-# endif
+// # ifndef EASY_OPTION_MEASURE_STORAGE_EXPAND
+// #  define EASY_OPTION_MEASURE_STORAGE_EXPAND 0
+// # endif
 
-# ifndef EASY_OPTION_EVENT_TRACING_ENABLED
-#  define EASY_OPTION_EVENT_TRACING_ENABLED false
-# endif
+// # ifndef EASY_OPTION_EVENT_TRACING_ENABLED
+// #  define EASY_OPTION_EVENT_TRACING_ENABLED false
+// # endif
 
-# ifndef EASY_OPTION_LOW_PRIORITY_EVENT_TRACING
-#  define EASY_OPTION_LOW_PRIORITY_EVENT_TRACING true
-# endif
+// # ifndef EASY_OPTION_LOW_PRIORITY_EVENT_TRACING
+// #  define EASY_OPTION_LOW_PRIORITY_EVENT_TRACING true
+// # endif
 
-# ifndef EASY_OPTION_LOG_ENABLED
-#  define EASY_OPTION_LOG_ENABLED 0
-# endif
+// # ifndef EASY_OPTION_LOG_ENABLED
+// #  define EASY_OPTION_LOG_ENABLED 0
+// # endif
 
-# ifndef EASY_OPTION_START_LISTEN_ON_STARTUP
-#  define EASY_OPTION_START_LISTEN_ON_STARTUP 0
-# endif
+// # ifndef EASY_OPTION_START_LISTEN_ON_STARTUP
+// #  define EASY_OPTION_START_LISTEN_ON_STARTUP 0
+// # endif
 
-#endif // #ifndef BUILD_WITH_EASY_PROFILER
+// #endif // #ifndef BUILD_WITH_EASY_PROFILER
 
 # ifndef EASY_DEFAULT_PORT
 #  define EASY_DEFAULT_PORT 28077
@@ -453,7 +453,7 @@ namespace profiler {
     // Note: It is better to use macros defined above than a direct calls to API.
     //       But some API functions does not have macro wrappers...
 
-#ifdef USING_EASY_PROFILER
+// #ifdef USING_EASY_PROFILER
     extern "C" {
 
         /** Returns current time in ticks.
@@ -506,7 +506,7 @@ namespace profiler {
         \param _runtimeName Standard zero-terminated string which will be copied to the events buffer.
 
         \note _runtimeName must be an empty string ("") if you do not want to set name to the event at run-time.
-        
+
         \ingroup profiler
         */
         PROFILER_API void storeEvent(const BaseBlockDescriptor* _desc, const char* _runtimeName = "");
@@ -667,7 +667,7 @@ namespace profiler {
         PROFILER_API bool isListening();
 
         /** Returns current major version.
-        
+
         \ingroup profiler
         */
         PROFILER_API uint8_t versionMajor();
@@ -765,44 +765,44 @@ namespace profiler {
         PROFILER_API timestamp_t main_thread_frameTimeLocalAvg(Duration _durationCast = ::profiler::MICROSECONDS);
 
     }
-#else
-    inline EASY_CONSTEXPR_FCN timestamp_t now() { return 0; }
-    inline EASY_CONSTEXPR_FCN timestamp_t toNanoseconds(timestamp_t) { return 0; }
-    inline EASY_CONSTEXPR_FCN timestamp_t toMicroseconds(timestamp_t) { return 0; }
-    inline const BaseBlockDescriptor* registerDescription(EasyBlockStatus, const char*, const char*, const char*, int, block_type_t, color_t, bool = false)
-    { return reinterpret_cast<const BaseBlockDescriptor*>(0xbad); }
-    inline void endBlock() { }
-    inline void setEnabled(bool) { }
-    inline EASY_CONSTEXPR_FCN bool isEnabled() { return false; }
-    inline void storeEvent(const BaseBlockDescriptor*, const char* = "") { }
-    inline void storeBlock(const BaseBlockDescriptor*, const char*, timestamp_t, timestamp_t) { }
-    inline void beginBlock(Block&) { }
-    inline void beginNonScopedBlock(const BaseBlockDescriptor*, const char* = "") { }
-    inline uint32_t dumpBlocksToFile(const char*) { return 0; }
-    inline const char* registerThreadScoped(const char*, ThreadGuard&) { return ""; }
-    inline const char* registerThread(const char*) { return ""; }
-    inline void setEventTracingEnabled(bool) { }
-    inline EASY_CONSTEXPR_FCN bool isEventTracingEnabled() { return false; }
-    inline void setLowPriorityEventTracing(bool) { }
-    inline EASY_CONSTEXPR_FCN bool isLowPriorityEventTracing() { return false; }
-    inline void setContextSwitchLogFilename(const char*) { }
-    inline EASY_CONSTEXPR_FCN const char* getContextSwitchLogFilename() { return ""; }
-    inline void startListen(uint16_t = ::profiler::DEFAULT_PORT) { }
-    inline void stopListen() { }
-    inline EASY_CONSTEXPR_FCN bool isListening() { return false; }
-    inline EASY_CONSTEXPR_FCN uint8_t versionMajor() { return 0; }
-    inline EASY_CONSTEXPR_FCN uint8_t versionMinor() { return 0; }
-    inline EASY_CONSTEXPR_FCN uint16_t versionPatch() { return 0; }
-    inline EASY_CONSTEXPR_FCN uint32_t version() { return 0; }
-    inline EASY_CONSTEXPR_FCN const char* versionName() { return "v0.0.0_disabled"; }
-    inline EASY_CONSTEXPR_FCN bool isMainThread() { return false; }
-    inline EASY_CONSTEXPR_FCN timestamp_t this_thread_frameTime(Duration = ::profiler::MICROSECONDS) { return 0; }
-    inline EASY_CONSTEXPR_FCN timestamp_t this_thread_frameTimeLocalMax(Duration = ::profiler::MICROSECONDS) { return 0; }
-    inline EASY_CONSTEXPR_FCN timestamp_t this_thread_frameTimeLocalAvg(Duration = ::profiler::MICROSECONDS) { return 0; }
-    inline EASY_CONSTEXPR_FCN timestamp_t main_thread_frameTime(Duration = ::profiler::MICROSECONDS) { return 0; }
-    inline EASY_CONSTEXPR_FCN timestamp_t main_thread_frameTimeLocalMax(Duration = ::profiler::MICROSECONDS) { return 0; }
-    inline EASY_CONSTEXPR_FCN timestamp_t main_thread_frameTimeLocalAvg(Duration = ::profiler::MICROSECONDS) { return 0; }
-#endif
+// #else
+//     inline EASY_CONSTEXPR_FCN timestamp_t now() { return 0; }
+//     inline EASY_CONSTEXPR_FCN timestamp_t toNanoseconds(timestamp_t) { return 0; }
+//     inline EASY_CONSTEXPR_FCN timestamp_t toMicroseconds(timestamp_t) { return 0; }
+//     inline const BaseBlockDescriptor* registerDescription(EasyBlockStatus, const char*, const char*, const char*, int, block_type_t, color_t, bool = false)
+//     { return reinterpret_cast<const BaseBlockDescriptor*>(0xbad); }
+//     inline void endBlock() { }
+//     inline void setEnabled(bool) { }
+//     inline EASY_CONSTEXPR_FCN bool isEnabled() { return false; }
+//     inline void storeEvent(const BaseBlockDescriptor*, const char* = "") { }
+//     inline void storeBlock(const BaseBlockDescriptor*, const char*, timestamp_t, timestamp_t) { }
+//     inline void beginBlock(Block&) { }
+//     inline void beginNonScopedBlock(const BaseBlockDescriptor*, const char* = "") { }
+//     inline uint32_t dumpBlocksToFile(const char*) { return 0; }
+//     inline const char* registerThreadScoped(const char*, ThreadGuard&) { return ""; }
+//     inline const char* registerThread(const char*) { return ""; }
+//     inline void setEventTracingEnabled(bool) { }
+//     inline EASY_CONSTEXPR_FCN bool isEventTracingEnabled() { return false; }
+//     inline void setLowPriorityEventTracing(bool) { }
+//     inline EASY_CONSTEXPR_FCN bool isLowPriorityEventTracing() { return false; }
+//     inline void setContextSwitchLogFilename(const char*) { }
+//     inline EASY_CONSTEXPR_FCN const char* getContextSwitchLogFilename() { return ""; }
+//     inline void startListen(uint16_t = ::profiler::DEFAULT_PORT) { }
+//     inline void stopListen() { }
+//     inline EASY_CONSTEXPR_FCN bool isListening() { return false; }
+//     inline EASY_CONSTEXPR_FCN uint8_t versionMajor() { return 0; }
+//     inline EASY_CONSTEXPR_FCN uint8_t versionMinor() { return 0; }
+//     inline EASY_CONSTEXPR_FCN uint16_t versionPatch() { return 0; }
+//     inline EASY_CONSTEXPR_FCN uint32_t version() { return 0; }
+//     inline EASY_CONSTEXPR_FCN const char* versionName() { return "v0.0.0_disabled"; }
+//     inline EASY_CONSTEXPR_FCN bool isMainThread() { return false; }
+//     inline EASY_CONSTEXPR_FCN timestamp_t this_thread_frameTime(Duration = ::profiler::MICROSECONDS) { return 0; }
+//     inline EASY_CONSTEXPR_FCN timestamp_t this_thread_frameTimeLocalMax(Duration = ::profiler::MICROSECONDS) { return 0; }
+//     inline EASY_CONSTEXPR_FCN timestamp_t this_thread_frameTimeLocalAvg(Duration = ::profiler::MICROSECONDS) { return 0; }
+//     inline EASY_CONSTEXPR_FCN timestamp_t main_thread_frameTime(Duration = ::profiler::MICROSECONDS) { return 0; }
+//     inline EASY_CONSTEXPR_FCN timestamp_t main_thread_frameTimeLocalMax(Duration = ::profiler::MICROSECONDS) { return 0; }
+//     inline EASY_CONSTEXPR_FCN timestamp_t main_thread_frameTimeLocalAvg(Duration = ::profiler::MICROSECONDS) { return 0; }
+// #endif
 
     /** API functions binded to current thread.
 

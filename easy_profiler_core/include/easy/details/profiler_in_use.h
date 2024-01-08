@@ -52,7 +52,7 @@ The Apache License, Version 2.0 (the "License");
 //                       to disable profiler for certain source-file or project.
 //
 
-#if defined(BUILD_WITH_EASY_PROFILER) && !defined(DISABLE_EASY_PROFILER)
+// #if defined(BUILD_WITH_EASY_PROFILER) && !defined(DISABLE_EASY_PROFILER)
 
 /**
 \defgroup profiler EasyProfiler
@@ -65,6 +65,6 @@ The Apache License, Version 2.0 (the "License");
 */
 # define USING_EASY_PROFILER
 
-#endif
+// #endif
 
 #endif // EASY_PROFILER_IN_USE_H
